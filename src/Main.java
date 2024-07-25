@@ -3,9 +3,7 @@ import java.time.LocalDate;
 public class Main {
     public static void countLeapYear(int year) {
         //Задача 1: Выяснить, високосный ли введенный год
-        if (year <= 1584) {
-            System.out.println("Високосные года еще не введены!");
-        } else if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " год является високосным");
         } else {
             System.out.println(year + " год не является високосным");
@@ -13,16 +11,11 @@ public class Main {
     }
 
     //Задача 2 подобрать версию приложения для устройства клиента
-    public static void clientDevice(int clientDeviceYear, byte clientOS) {
-
-        if (clientOS == 0 && clientDeviceYear < 2024) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else if (clientOS == 0 && clientDeviceYear >= 2024) {
-            System.out.println("Установите версию приложения для iOS по ссылке");
-        } else if (clientOS == 1 && clientDeviceYear < 2024) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else if (clientOS == 1 && clientDeviceYear >= 2024) {
-            System.out.println("Установите версию приложения для Android по ссылке");
+    public static String clientDeviceAge(int clientDeviceYear) {
+        if (clientDeviceYear >= 2024) {
+            return ("");
+        } else {
+            return (" облегченную");
         }
     }
 
@@ -46,9 +39,14 @@ public class Main {
         countLeapYear(year);
         System.out.println("Задача 2");
         //Ввод данных и вывод решения второй задачи
-        int clientDeviceYear = 2010;
-        byte clientOS = 0;
-        clientDevice(clientDeviceYear, clientOS);
+        int clientDeviceYear = 2024;
+        byte clientOS = 1;
+        String strClientDeviceAge = clientDeviceAge(clientDeviceYear);
+        if (clientOS == 0) {
+            System.out.println("Установите" + strClientDeviceAge + " версию для iOS");
+        } else {
+            System.out.println("Установите" + strClientDeviceAge + " версию для Android");
+        }
         System.out.println("Задача 3");
         //Ввод данных и вывод решения третьей задачи
         int deliveryDistance = 50;
